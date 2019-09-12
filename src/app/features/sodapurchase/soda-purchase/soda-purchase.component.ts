@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http'; 
 import { SodaPurchaseService } from './soda-purchase-service';
 
 
@@ -26,14 +24,21 @@ brand: any =['pepsi','coke','diet-coke','diet-pepsi'];
     this.sodaPurchaseForm = this.fb.group({
       quantity: ['', Validators.required],
       brand:['',Validators.required]
-
     });
-
   }
 
   performAction(action){
-  console.log(this.sodaPurchaseService.updateMachineState(action));
+    console.log(this.createUpdateMachineStatePayload(action));
+    console.log(action);
+  console.log(this.sodaPurchaseService.updateMachineState(this.createUpdateMachineStatePayload(action)));
 
+  }
+
+  createUpdateMachineStatePayload(data)
+  {
+    return {
+      action: data
+    }
   }
  
 
