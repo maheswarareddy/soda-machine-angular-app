@@ -7,7 +7,7 @@ const routes: Routes = [
 
   {
     path:"soda-machine",
-    loadChildren:"./features/demographic/demographic.module#DemographicModule"
+    loadChildren:"./features/sodapurchase/soda-purchase.module#SodaPurchaseModule"
   }
 ];
 
