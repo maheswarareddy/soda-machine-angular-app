@@ -1,0 +1,35 @@
+<div class="example-button-row">
+  <button mat-raised-button (click)="performAction('insert-coin')">Insert quarter</button>
+  <button mat-raised-button (click)="performAction('eject-coin')">Eject quarter</button>
+</div>
+<p></p>
+
+
+
+<form [formGroup]="sodaPurchaseForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="legacy" >
+        <mat-label>Soda Brand</mat-label>
+            <mat-select formControlName="brand">
+                <mat-option [value]="">
+                    Choose Soda Brand
+                </mat-option>
+                <mat-option *ngFor="let brand of brand" [value]="brand">
+                    {{brand}}
+                </mat-option>
+            </mat-select>
+        <mat-error>Please select soda brand</mat-error>
+    </mat-form-field>
+
+  <br/>
+
+  <br/> 
+
+    <mat-form-field appearance="legacy" >
+        <input matInput type="text" placeholder="Quantity" formControlName="quantity" />
+        <mat-error>Please enter Quantity</mat-error>
+
+    </mat-form-field>
+    <br/>
+    <button mat-raised-button type="submit">Purchase</button>
+
+  </form>
