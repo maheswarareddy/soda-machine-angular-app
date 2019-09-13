@@ -101,10 +101,10 @@ export class SodaPurchaseComponent implements OnInit {
 
   onSodaPurchaseSubmit(){
     if(this.sodaPurchaseForm.valid){     
-    this.sodaPurchaseService.addToInventory(this.sodaPurchaseForm.value).subscribe(data=>{
+    this.sodaPurchaseService.purchaseSoda(this.sodaPurchaseForm.value).subscribe(data=>{
       this.sodaSold = data.sodaSold;
       if( this.sodaSold){
-       this.snackbar.open(this.sodaPurchaseForm.value.brand+"Has been sold","Quantity: "+this.sodaPurchaseForm.value.quantity,{
+       this.snackbar.open(this.sodaPurchaseForm.value.brand+" has been sold","Quantity: "+this.sodaPurchaseForm.value.quantity,{
          duration: 5000,
        });
       }
