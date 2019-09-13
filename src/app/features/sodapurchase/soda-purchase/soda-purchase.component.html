@@ -1,35 +1,118 @@
-<div class="example-button-row">
-  <button mat-raised-button (click)="performAction('insert-coin')">Insert quarter</button>
-  <button mat-raised-button (click)="performAction('eject-coin')">Eject quarter</button>
+<div style="margin-left:33%;margin-right:25%">
+        <h1 style="margin-left: 30%">Soda Machine</h1>
+        <mat-divider></mat-divider>
+        <h2>Payment</h2>
+        <div class="example-button-row">
+          <button mat-raised-button (click)="performAction('insert-coin')">Insert quarter</button>
+          <button mat-raised-button (click)="performAction('eject-coin')">Eject quarter</button>
+          <button mat-raised-button (click)="getMoneyInserted()">Get Money Inserted</button>
+        </div>
+        <p></p>
+
+    
+        <mat-divider></mat-divider>
+        
+        <h2>Soda Purchase</h2>
+        <form [formGroup]="sodaPurchaseForm" (ngSubmit)="onSodaPurchaseSubmit()">
+            <mat-form-field appearance="legacy" >
+                <mat-label>Soda Brand</mat-label>
+                    <mat-select formControlName="brand">
+                        <mat-option [value]="">
+                            Choose Soda Brand
+                        </mat-option>
+                        <mat-option *ngFor="let brand of brand" [value]="brand">
+                            {{brand}}
+                        </mat-option>
+                    </mat-select>
+                <mat-error>Please select soda brand</mat-error>
+            </mat-form-field>
+        
+          <br/>
+        
+          <br/> 
+        
+            <mat-form-field appearance="legacy" >
+                <input matInput type="text" placeholder="Quantity" formControlName="quantity" />
+                <mat-error>Please enter Quantity</mat-error>
+        
+            </mat-form-field>
+            <br/>
+            <button mat-raised-button type="submit">Purchase</button>
+        
+          </form>
+        <br/>
+        <mat-divider></mat-divider>
+         
+         <h2>Soda Inventory</h2>
+         <h4>add inventory</h4>
+          <form [formGroup]="addSodaInventoryForm" (ngSubmit)="onAddSodaInventorySubmit()">
+            <mat-form-field appearance="legacy" >
+                <mat-label>Soda Brand</mat-label>
+                    <mat-select formControlName="brand">
+                        <mat-option [value]="">
+                            Choose Soda Brand
+                        </mat-option>
+                        <mat-option *ngFor="let brand of brand" [value]="brand">
+                            {{brand}}
+                        </mat-option>
+                    </mat-select>
+                <mat-error>Please select soda brand</mat-error>
+            </mat-form-field>
+        
+          <br/>
+        
+          <br/> 
+        
+            <mat-form-field appearance="legacy" >
+                <input matInput type="text" placeholder="Quantity" formControlName="quantity" />
+                <mat-error>Please enter Quantity</mat-error>
+            </mat-form-field>
+            <br/>
+            
+            <br/> 
+            <mat-form-field appearance="legacy" >
+                    <input matInput type="text" placeholder="Price" formControlName="price" />
+                    <mat-error>Please enter price</mat-error>
+                </mat-form-field>
+            <br/>
+            <button mat-raised-button type="submit">Add to Inventory</button>
+        
+          </form> 
+
+          <h4>Update Inventory</h4>
+          <form [formGroup]="updateSodaInventoryForm" (ngSubmit)="onUpdateSodaInventorySubmit()">
+                <mat-form-field appearance="legacy" >
+                    <mat-label>Soda Brand</mat-label>
+                        <mat-select formControlName="brand">
+                            <mat-option [value]="">
+                                Choose Soda Brand
+                            </mat-option>
+                            <mat-option *ngFor="let brand of brand" [value]="brand">
+                                {{brand}}
+                            </mat-option>
+                        </mat-select>
+                    <mat-error>Please select soda brand</mat-error>
+                </mat-form-field>
+            
+              <br/>
+            
+              <br/> 
+            
+                <mat-form-field appearance="legacy" >
+                    <input matInput type="text" placeholder="Quantity" formControlName="quantity" />
+                    <mat-error>Please enter Quantity</mat-error>
+                </mat-form-field>
+                <br/>
+            
+                <br/> 
+            <mat-form-field appearance="legacy" >
+                    <input matInput type="text" placeholder="Price" formControlName="price" />
+                    <mat-error>Please enter price</mat-error>
+                </mat-form-field>
+                <br/>
+                <button mat-raised-button type="submit">Update Inventory</button>
+            
+              </form> 
+
 </div>
-<p></p>
 
-
-
-<form [formGroup]="sodaPurchaseForm" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="legacy" >
-        <mat-label>Soda Brand</mat-label>
-            <mat-select formControlName="brand">
-                <mat-option [value]="">
-                    Choose Soda Brand
-                </mat-option>
-                <mat-option *ngFor="let brand of brand" [value]="brand">
-                    {{brand}}
-                </mat-option>
-            </mat-select>
-        <mat-error>Please select soda brand</mat-error>
-    </mat-form-field>
-
-  <br/>
-
-  <br/> 
-
-    <mat-form-field appearance="legacy" >
-        <input matInput type="text" placeholder="Quantity" formControlName="quantity" />
-        <mat-error>Please enter Quantity</mat-error>
-
-    </mat-form-field>
-    <br/>
-    <button mat-raised-button type="submit">Purchase</button>
-
-  </form>

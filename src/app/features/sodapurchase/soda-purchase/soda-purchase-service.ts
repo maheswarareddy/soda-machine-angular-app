@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 
 @Injectable({providedIn:'root'})
 export class SodaPurchaseService{
@@ -11,16 +13,26 @@ constructor(private httpClient:HttpClient){
 
 }
 
-purchaseSoda(payload: any){
-    return this.httpClient.post(this.baseUrl + `/${this.machineId}/soda/purchase`,payload).subscribe(data=>{
-        return data;
-    });
+purchaseSoda(payload: any):Observable<any>{
+    return this.httpClient.post(this.baseUrl + `/${this.machineId}/soda/purchase`,payload);
 }
 
-updateMachineState(payload: any){
-    return this.httpClient.put(this.baseUrl + `/${this.machineId}/state`,payload).subscribe(data=>{
-        return data;
-    });
+addToInventory(payload: any):Observable<any>{
+    return this.httpClient.post(this.baseUrl + `/${this.machineId}/inventory/soda`,payload);
+}
+
+updateInventory(payload: any,brand:String):Observable<any>{
+    return this.httpClient.put(this.baseUrl + `/${this.machineId}/inventory/soda/${brand}`,payload);
+}
+
+updateMachineState(payload: any):Observable<any>{
+    return this.httpClient.put(this.baseUrl + `/${this.machineId}/state`,payload); 
+    
+}
+
+getMachineState():Observable<any>{
+    return this.httpClient.get(this.baseUrl + `/${this.machineId}/state`); 
+    
 }
 
 }

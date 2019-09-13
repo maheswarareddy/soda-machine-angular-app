@@ -13,12 +13,13 @@ import { AppMaterialModule } from 'src/app/app-material/app-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http'; 
 import { SodaPurchaseRoutingModule } from './soda-purchase-routing.module';
-
+import { SodaPurchaseService } from "./soda-purchase/soda-purchase-service"
 
 
 
 @NgModule({
   declarations: [SodaPurchaseComponent],
+  providers:[SodaPurchaseService],
   imports: [
     SodaPurchaseRoutingModule,
     HttpClientModule,
@@ -28,6 +29,7 @@ import { SodaPurchaseRoutingModule } from './soda-purchase-routing.module';
     CommonModule,
     NgxMaskModule.forRoot()
   ]
+  
 })
 
 
